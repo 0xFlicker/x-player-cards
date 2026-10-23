@@ -4,6 +4,8 @@
 
 The example is **Dropfield**, an original falling-block arcade: seven shapes, row clearing, a ghost landing guide, increasing speed, keyboard and touch controls, and optional synthesized sound. No accounts, cookies, storage, runtime dependencies, or backend.
 
+**[Play Dropfield](https://dropfield.vercel.app/)** · [Open the compact player](https://dropfield.vercel.app/embed/) · [Use this repository as a template](https://github.com/0xFlicker/x-player-cards/generate)
+
 ![Dropfield poster](examples/dropfield/poster.png)
 
 ## Use the skill
