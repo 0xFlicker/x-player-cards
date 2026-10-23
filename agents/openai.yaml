@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Player Cards"
+  short_description: "Build compact interactive apps for X Player Cards"
+  default_prompt: "Use $x-player-cards to build and verify an anonymous interactive app that can load inside an X Player Card."

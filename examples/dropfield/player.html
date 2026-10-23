@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#171a18">
+  <title>Dropfield · Play</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../player.css">
+  <script type="module" src="../player.js"></script>
+</head>
+<body>
+  <main class="game" aria-label="Dropfield falling-block game">
+    <header class="game-header">
+      <a class="wordmark" href="../" target="_blank" rel="noopener noreferrer">dropfield<span>↘</span></a>
+      <div class="top-actions"><button id="sound" type="button" aria-pressed="false">Sound off</button><button id="pause" type="button" disabled>Pause</button></div>
+    </header>
+    <section class="play-area">
+      <div class="board-wrap">
+        <canvas id="board" width="300" height="600" tabindex="0" aria-label="Game board. Arrow keys move and rotate. Space drops. P pauses."></canvas>
+        <div id="overlay" class="overlay">
+          <p id="eyebrow">ONE BLOCK AT A TIME</p>
+          <h1 id="overlay-title">Find your<br>flow.</h1>
+          <p id="overlay-copy">Stack shapes.<br>Make room.</p>
+          <button id="start" class="primary" type="button">Let’s play <span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
+      <aside class="sidebar" aria-label="Game stats">
+        <div class="stat"><span>SCORE</span><strong id="score">00000</strong></div>
+        <div class="small-stats"><div class="stat"><span>LINES</span><strong id="lines">00</strong></div><div class="stat"><span>LEVEL</span><strong id="level">01</strong></div></div>
+        <div class="next"><span>UP NEXT</span><canvas id="next" width="160" height="100" aria-label="Next shape"></canvas></div>
+        <div class="rule"><span class="rule-dot"></span><p>Full rows disappear.<br>A little room to breathe.</p></div>
+        <div class="keyboard-help"><p><kbd>←</kbd> <kbd>→</kbd> move</p><p><kbd>↑</kbd> rotate</p><p><kbd>↓</kbd> soft drop</p><p><kbd>space</kbd> drop</p><p><kbd>P</kbd> pause</p></div>
+      </aside>
+    </section>
+    <nav class="touch-controls" aria-label="Game controls">
+      <button data-action="left" aria-label="Move left" disabled>←</button>
+      <button data-action="rotate" aria-label="Rotate clockwise" disabled>↻</button>
+      <button data-action="right" aria-label="Move right" disabled>→</button>
+      <button data-action="down" aria-label="Soft drop" disabled>↓</button>
+      <button data-action="drop" class="drop" aria-label="Hard drop" disabled>DROP <span aria-hidden="true">↡</span></button>
+    </nav>
+    <footer class="game-footer"><span id="status" role="status">YOUR NEXT SMALL OBSESSION</span><a href="../" target="_blank" rel="noopener noreferrer">Open full page ↗</a></footer>
+  </main>
+  <noscript>This game needs JavaScript. <a href="../" target="_blank" rel="noopener noreferrer">Open the full page</a>.</noscript>
+</body>
+</html>
