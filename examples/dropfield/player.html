@@ -22,7 +22,7 @@
           <button id="start" class="primary" type="button">Let’s play <span aria-hidden="true">↗</span></button>
         </div>
       </div>
-      <aside class="sidebar" aria-label="Game stats">
+      <aside class="sidebar" aria-label="Game controls and stats">
         <div class="top-actions">
           <button id="sound" type="button" aria-label="Enable sound" title="Enable sound" aria-pressed="false">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 5 6 9H3v6h3l5 4Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="mute-slash" d="m3 3 18 18"/></svg>
@@ -32,21 +32,22 @@
             <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" hidden><path d="m8 5 11 7-11 7Z"/></svg>
           </button>
         </div>
-        <div class="stat"><span>SCORE</span><strong id="score">00000</strong></div>
-        <div class="small-stats"><div class="stat"><span>LINES</span><strong id="lines">00</strong></div><div class="stat"><span>LEVEL</span><strong id="level">01</strong></div></div>
+        <div class="stats">
+          <div class="stat"><span>SCORE</span><strong id="score">00000</strong></div>
+          <div class="stat"><span>LINES</span><strong id="lines">00</strong></div>
+          <div class="stat"><span>LEVEL</span><strong id="level">01</strong></div>
+        </div>
         <div class="next"><span>UP NEXT</span><canvas id="next" width="160" height="100" aria-label="Next shape"></canvas></div>
-        <div class="rule"><span class="rule-dot"></span><p>Full rows disappear.<br>A little room to breathe.</p></div>
-        <div class="keyboard-help"><p><kbd>←</kbd> <kbd>→</kbd> move</p><p><kbd>↑</kbd> rotate</p><p><kbd>↓</kbd> soft drop</p><p><kbd>space</kbd> drop</p><p><kbd>P</kbd> pause</p></div>
+        <nav class="touch-controls" aria-label="Game controls">
+          <button data-action="left" aria-label="Move left" title="Move left (←)" disabled>←</button>
+          <button data-action="rotate" aria-label="Rotate clockwise" title="Rotate clockwise (↑)" disabled>↻</button>
+          <button data-action="right" aria-label="Move right" title="Move right (→)" disabled>→</button>
+          <button data-action="down" aria-label="Soft drop" title="Soft drop (↓)" disabled>↓</button>
+          <button data-action="drop" class="drop" aria-label="Hard drop" title="Hard drop (Space)" disabled>DROP <span aria-hidden="true">↡</span></button>
+        </nav>
+        <footer class="game-footer"><span id="status" role="status">YOUR NEXT SMALL OBSESSION</span><a href="../" target="_blank" rel="noopener noreferrer">Open full page ↗</a></footer>
       </aside>
     </section>
-    <nav class="touch-controls" aria-label="Game controls">
-      <button data-action="left" aria-label="Move left" disabled>←</button>
-      <button data-action="rotate" aria-label="Rotate clockwise" disabled>↻</button>
-      <button data-action="right" aria-label="Move right" disabled>→</button>
-      <button data-action="down" aria-label="Soft drop" disabled>↓</button>
-      <button data-action="drop" class="drop" aria-label="Hard drop" disabled>DROP <span aria-hidden="true">↡</span></button>
-    </nav>
-    <footer class="game-footer"><span id="status" role="status">YOUR NEXT SMALL OBSESSION</span><a href="../" target="_blank" rel="noopener noreferrer">Open full page ↗</a></footer>
   </main>
   <noscript>This game needs JavaScript. <a href="../" target="_blank" rel="noopener noreferrer">Open the full page</a>.</noscript>
 </body>
