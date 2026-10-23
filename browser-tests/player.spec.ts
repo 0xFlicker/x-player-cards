@@ -27,6 +27,8 @@ for (const size of [320, 640]) test(`plays in nested ${size}px frames with stora
   });
   await page.goto(`http://localhost:4174/?size=${size}`);
   const player = page.frameLocator('iframe').frameLocator('iframe');
+  const overlayFits = await player.locator('#overlay').evaluate(el => el.scrollHeight <= el.clientHeight && el.scrollWidth <= el.clientWidth);
+  expect(overlayFits).toBe(true);
   await player.getByRole('button', { name: 'Let’s play' }).click();
   await player.locator('#board').press('ArrowLeft');
   await player.locator('#board').press('ArrowUp');
