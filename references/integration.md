@@ -26,6 +26,8 @@ Share, player, image, and any backend/media dependencies must be reachable anony
 
 ## Framing and sandbox limits
 
+Dropfield's [October 23, 2026 manual test](verification.md#actual-x-behavior) found inline play in regular posts on web, a web popup targeting `/embed/` in regular posts on mobile, and no working interactive player in X Articles. Treat regular posts as the tested sharing surface. Build the player to work when opened directly as well as inside a frame; it must not depend on initialization or messages from the share page or a parent frame. The mobile popup targets `twitter:player`, not the ordinary share page, and is distinct from the player's outbound full-page link.
+
 The player needs `frame-ancestors 'self' https://x.com https://*.x.com https://twitter.com https://*.twitter.com` in an **HTTP response header**. Meta CSP cannot enforce this directive. `frame-src` governs children of your document, not parents. All ancestors in a nested frame chain must pass. Multiple CSPs are enforced together, so inspect the application, proxy, and CDN for restrictive duplicates. Remove conflicting `DENY`/`SAMEORIGIN` X-Frame-Options on the embed route only.
 
 The House's desktop inspection of a third-party game observed:

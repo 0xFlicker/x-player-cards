@@ -54,7 +54,19 @@ Post the share page URL
 
 `twitter:player` points to HTML. There is no X SDK, OAuth flow, or posting API in this app. The player response allows X frame ancestors; the ordinary page denies framing. A new-tab link opens the full page. GitHub Pages cannot configure the required custom header policy, so this starter deploys to Vercel.
 
-**Platform caveat:** valid metadata and a working iframe do not guarantee X will display an interactive card for every domain or client. The original research observed desktop behavior. Test an actual authorized X post and relevant mobile clients before claiming support. This repository does not post anything for you.
+## Tested X behavior
+
+Manual testing of Dropfield on **October 23, 2026** confirmed:
+
+| Surface | Observed result |
+| --- | --- |
+| Regular X post, web | The game displays inline inside the post. |
+| Regular X post, mobile | X opens a web popup targeting the player URL, `https://dropfield.vercel.app/embed/`. It does not play inline in the feed. |
+| X Article | The interactive player does not work in an article. Use a regular post to test or share it. |
+
+Paste **https://dropfield.vercel.app/** into a regular post. Keep the embed route usable both inside a frame and when opened directly: mobile opens that route, not the full share page.
+
+These are observed results for this example, not a guarantee for every domain or X client version. Browser, mobile OS, and app versions were not recorded. See [the manual test record](references/verification.md#actual-x-behavior). This repository does not post anything for you.
 
 ## Verify
 

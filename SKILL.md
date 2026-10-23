@@ -7,6 +7,8 @@ description: Build and verify compact interactive web apps, games, and replay pl
 
 Create a useful standalone web app with a compact, anonymous player that X can load in an iframe. Start from the user's app and hosting choices. The included Dropfield game is an example, not the required product or framework.
 
+Target **regular X posts**. In the maintainer's October 23, 2026 Dropfield test, the player worked inline on web, opened in a web popup targeting `/embed/` on mobile, and did not work in an X Article. Keep the player usable as a directly opened page as well as an iframe; do not promise inline mobile or Article support. See [the manual test record](references/verification.md#actual-x-behavior) for scope.
+
 Read [the integration guide](references/integration.md) for metadata, headers, sandbox behavior, URL state, and Next.js details. Read [verification](references/verification.md) before claiming completion. For this starter or Vercel publishing, read [deployment](references/deployment.md).
 
 ## Preserve the three-resource contract
@@ -45,6 +47,6 @@ Use Bun for this starter: `bun install --frozen-lockfile`, `bun run dev`, `bun t
 
 ## Report what was actually proved
 
-Distinguish source review, local tests, deployed anonymous HTTP/browser tests, and actual X-client tests. Successful metadata and iframe tests do **not** prove X accepts a domain or renders an inline card in every client. The source observations were desktop-specific; current platform policy, approval requirements, cache lifetimes, and mobile behavior remain unestablished until independently checked.
+Distinguish source review, local tests, deployed anonymous HTTP/browser tests, and actual X-client tests. Successful metadata and iframe tests do **not** prove X accepts a domain or renders an inline card in every client. Preserve the documented Dropfield manual results, including the difference between web inline play and a mobile popup. Current platform policy, approval requirements, cache lifetimes, and behavior on other client versions remain unestablished until checked.
 
 This skill adapts [The House's October 22, 2026 implementation notes](https://thehouse.game/updates/2026-10-22-interactive-x-embeds). Supporting sources and their scope are in the references.
