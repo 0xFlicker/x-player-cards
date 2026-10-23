@@ -12,10 +12,6 @@
 </head>
 <body>
   <main class="game" aria-label="Dropfield falling-block game">
-    <header class="game-header">
-      <a class="wordmark" href="../" target="_blank" rel="noopener noreferrer">dropfield<span>↘</span></a>
-      <div class="top-actions"><button id="sound" type="button" aria-pressed="false">Sound off</button><button id="pause" type="button" disabled>Pause</button></div>
-    </header>
     <section class="play-area">
       <div class="board-wrap">
         <canvas id="board" width="300" height="600" tabindex="0" aria-label="Game board. Arrow keys move and rotate. Space drops. P pauses."></canvas>
@@ -27,6 +23,15 @@
         </div>
       </div>
       <aside class="sidebar" aria-label="Game stats">
+        <div class="top-actions">
+          <button id="sound" type="button" aria-label="Enable sound" title="Enable sound" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 5 6 9H3v6h3l5 4Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="mute-slash" d="m3 3 18 18"/></svg>
+          </button>
+          <button id="pause" type="button" aria-label="Pause" title="Pause" disabled>
+            <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg>
+            <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" hidden><path d="m8 5 11 7-11 7Z"/></svg>
+          </button>
+        </div>
         <div class="stat"><span>SCORE</span><strong id="score">00000</strong></div>
         <div class="small-stats"><div class="stat"><span>LINES</span><strong id="lines">00</strong></div><div class="stat"><span>LEVEL</span><strong id="level">01</strong></div></div>
         <div class="next"><span>UP NEXT</span><canvas id="next" width="160" height="100" aria-label="Next shape"></canvas></div>

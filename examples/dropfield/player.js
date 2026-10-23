@@ -34,7 +34,11 @@ function setState(value) {
   state = value;
   $('overlay').hidden = value === 'playing';
   $('pause').disabled = value === 'ready' || value === 'over';
-  $('pause').textContent = value === 'paused' ? 'Resume' : 'Pause';
+  const paused = value === 'paused';
+  $('pause').setAttribute('aria-label', paused ? 'Resume' : 'Pause');
+  $('pause').title = paused ? 'Resume' : 'Pause';
+  $('pause').querySelector('.pause-icon').toggleAttribute('hidden', paused);
+  $('pause').querySelector('.play-icon').toggleAttribute('hidden', !paused);
   document.querySelectorAll('[data-action]').forEach(button => { button.disabled = value !== 'playing'; });
   $('status').textContent = { ready: 'YOUR NEXT SMALL OBSESSION', playing: 'MAKE A LITTLE ROOM', paused: 'TAKE YOUR TIME', over: `FINAL SCORE · ${game.score}` }[value];
   if (value === 'paused' || value === 'over') {
@@ -81,7 +85,8 @@ $('sound').addEventListener('click', async () => {
     try { audio ??= new AudioContext(); await audio.resume(); sound = audio.state === 'running'; }
     catch (error) { console.warn('Sound could not start:', error); $('status').textContent = 'SOUND UNAVAILABLE · PLAY SILENTLY'; }
   }
-  $('sound').textContent = sound ? 'Sound on' : 'Sound off';
+  $('sound').setAttribute('aria-label', sound ? 'Mute sound' : 'Enable sound');
+  $('sound').title = sound ? 'Mute sound' : 'Enable sound';
   $('sound').setAttribute('aria-pressed', String(sound));
 });
 document.querySelectorAll('[data-action]').forEach(button => button.addEventListener('click', () => act(button.dataset.action)));

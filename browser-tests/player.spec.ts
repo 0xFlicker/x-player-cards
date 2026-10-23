@@ -29,6 +29,12 @@ for (const size of [320, 640]) test(`plays in nested ${size}px frames with stora
   const player = page.frameLocator('iframe').frameLocator('iframe');
   const overlayFits = await player.locator('#overlay').evaluate(el => el.scrollHeight <= el.clientHeight && el.scrollWidth <= el.clientWidth);
   expect(overlayFits).toBe(true);
+  const boardTop = await player.locator('.board-wrap').evaluate(el => el.getBoundingClientRect().top);
+  expect(boardTop).toBe(0);
+  await player.getByRole('button', { name: 'Enable sound' }).click();
+  await expect(player.getByRole('button', { name: 'Mute sound' })).toHaveAttribute('aria-pressed', 'true');
+  await player.getByRole('button', { name: 'Mute sound' }).click();
+  await expect(player.getByRole('button', { name: 'Enable sound' })).toHaveAttribute('aria-pressed', 'false');
   await player.getByRole('button', { name: 'Let’s play' }).click();
   await player.locator('#board').press('ArrowLeft');
   await player.locator('#board').press('ArrowUp');
@@ -38,8 +44,8 @@ for (const size of [320, 640]) test(`plays in nested ${size}px frames with stora
   await player.getByRole('button', { name: 'Hard drop' }).click();
   await player.getByRole('button', { name: 'Pause', exact: true }).click();
   await expect(player.locator('#overlay-title')).toHaveText('A little pause.');
-  // Enter on the focused resume button must activate it rather than game controls.
-  await player.locator('#start').press('Enter');
+  // Enter on the resume icon must activate the button rather than game controls.
+  await player.getByRole('button', { name: 'Resume', exact: true }).press('Enter');
   await expect(player.locator('#overlay')).toBeHidden();
   const dimensions = await player.locator('body').evaluate(el => ({ width: el.scrollWidth, height: el.scrollHeight, viewportWidth: innerWidth, viewportHeight: innerHeight }));
   expect(dimensions.width).toBeLessThanOrEqual(dimensions.viewportWidth);
